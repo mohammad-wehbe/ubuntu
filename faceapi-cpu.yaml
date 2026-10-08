@@ -1,0 +1,284 @@
+replicas: 1
+
+image:
+  #repository: regulaforensics/face-api
+  repository: 975050213146.dkr.ecr.eu-central-1.amazonaws.com/regulaforensics/face-api
+  tag: 6.4-gpu
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+resources:
+  limits:
+    memory: "29Gi"
+    nvidia.com/gpu: 1
+  requests:
+    cpu: "7.2"
+    memory: "28Gi"
+    nvidia.com/gpu: 1
+
+securityContext: {}
+
+podSecurityContext:
+  fsGroup: 0
+
+podAnnotations: {}
+
+priorityClassName: ~
+
+terminationGracePeriodSeconds: 60
+
+lifecycle:
+  preStop:
+    exec:
+      command: ["/bin/sh", "-c", "sleep 45"]
+
+
+affinity: {}
+
+tolerations: 
+  - key: nvidia.com/gpu
+    operator: Exists
+    effect: NoSchedule
+
+podDisruptionBudget:
+  enabled: true
+
+topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: "topology.kubernetes.io/zone"
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/instance: forensics-production
+    matchLabelKeys:
+      - pod-template-hash
+
+# `kubectl create secret generic faceapi-license -n <namespace> --from-file=regula.license`        
+
+licenseSecretName: face-api-license
+config:
+  sdk:
+    compare:
+      limitPerImageTypes: 2 
+    logging:
+      level: "ERROR"
+
+  service:
+    webServer:
+      port: 41101
+      workers: 4
+      timeout: 120
+
+      demoApp:
+        enabled: false
+
+      cors:
+        origins: "*"
+        headers: "*"
+        methods: "POST,PUT,GET,DELETE,PATCH,HEAD,OPTIONS"
+
+      logging:
+        level: "INFO"
+        formatter: text
+
+        access:
+          console: true
+          format: '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
+
+        app:
+          console: true
+
+      metrics:
+        enabled: false
+
+#`kubectl create secret tls certificates --key="tls.key" --cert="tls.crt"`
+      ssl:
+        enabled: true
+        certificatesSecretName: faceapi-certificate
+        tlsVersion: 1.3
+ 
+    storage:
+        type: s3
+        s3:
+        #accessKey: 
+        #accessSecret:
+          region: eu-central-1
+          secure: true
+          endpointUrl: https://s3.eu-central-1.amazonaws.com
+          awsCredentialsSecretName:  aws-credentials-s3
+#kubectl create secret generic aws-credentials -n <namespace> --from-literal=AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID> --from-literal=AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
+
+
+  #kubectl create secret generic database-credentials -n <namespace> --from-literal=SQL_CONNECTION_STRING=<SQL_CONNECTION_STRING>`
+  # connectionString: "postgresql://<username>:<password>@127.0.0.1:5432/regula"
+
+    database:
+      # connectionString: ~
+      connectionStringSecretName: database-credentials
+    detectMatch:
+      enabled: true
+      selfOrigins: []
+      results:
+        audit: false
+        location:
+          bucket: "production-feedapp-faceapi"
+          prefix: "results"
+
+    liveness:
+      enabled: true
+      ecdhSchema: "default"
+      hideMetadata: false
+      consistency: "eventual"
+      protectPersonalInfo: false
+      config:
+        recalculateLandmarks: false
+        firstImgFormat: ".jpg"
+        pngCompression: 3
+      sessions:
+        location:
+          bucket: "production-feedapp-faceapi"
+          prefix: "sessions"
+
+    houseKeeper:
+      enabled: true
+      beatCadence: 10
+      keepFor: 14400  # 4 hours, time for keeping houseKeeper statistics in the database
+      liveness:
+        enabled: false
+        keepFor: 31536000  # 1 year
+      search:
+        enabled: false
+        keepFor: 31536000  # 1 year
+
+    search:
+      enabled: true
+
+      vectorDatabase:
+        type: milvus
+        milvus:
+          endpoint: "http://milvus.default.svc.cluster.local:19530"
+
+env:
+  - name: "FACEAPI_THREADS"
+    value: "50"
+
+ingress:
+  enabled: true
+  className: nginx
+
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "300s"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300s"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300s"
+    nginx.ingress.kubernetes.io/client-body-buffer-size: 100m
+    nginx.ingress.kubernetes.io/proxy-body-size: 100m
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: facesdk-auth
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
+
+  # The hostnames or hosts configuration for the web Ingress
+  hosts:
+     - face-production.ht.iq
+  paths:
+   - /
+  pathType: Prefix
+
+  # TLS configuration for the FaceAPI Ingress
+  tls:
+    - secretName: faceapi-certificate
+      hosts:
+        - face-production.ht.iq
+
+networkPolicy:
+  enabled: false
+  annotations: {}
+  ingress: {}
+  egress: {}
+
+serviceAccount:
+  create: true
+  name: faceapi-pod-identity
+  annotations: {}
+
+rbac:
+  create: false
+  annotations: {}
+  extraRoleRules: []
+
+serviceMonitor:
+  # Set this to `true` to create ServiceMonitor for Prometheus operator
+  enabled: false
+  namespace: ~
+  interval: "30s"
+  scrapeTimeout: "10s"
+  # Additional labels that can be used so ServiceMonitor will be discovered by Prometheus
+  additionalLabels: {}
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 30
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 5
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 20
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 5
+
+startupProbe:
+  enabled: true
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 30
+
+autoscaling:
+  enabled: true
+  minReplicas: 6
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 35
+
+
+###################################
+# Subcharts
+###################################
+
+# NOTE
+# The subcharts are used for the demonstration and Dev/Test purposes related to the `liveness` and `search` capabilities.
+# We strongly recommend to deploy separate installations of the VectorDatabase (search) and DB (liveness/search) in Production.
+
+# Configuration for milvus subchart
+# For the advanced Milvus configuration, please referer to the official documentation.
+# ref: https://github.com/zilliztech/milvus-helm/tree/master/charts/milvus
+milvus:
+  enabled: false
+
+# Configuration for postgresql subchart
+# For the advanced PostgreSQL configuration, please referer to the official documentation.
+# ref: https://github.com/bitnami/charts/tree/main/bitnami/postgresql
+postgresql:
+  volumePermissions:
+    enabled: false
+  enabled: false
+  auth:
+    username: "regula"
+    password: "Regulapasswd#1"
+    postgresPassword: "Regulapasswd#1"
+    database: "regula"
+  primary:
+    extraEnvVars:
+      - name: POSTGRESQL_MAX_CONNECTIONS
+        value: "1000"
+    resources:        
+      requests:
+        cpu: "8"
+        memory: "16Gi"

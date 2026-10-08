@@ -1,0 +1,206 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: faceapi
+  namespace: default
+spec:
+  maxReplicas: 50
+  minReplicas: 50
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: faceapi
+  targetCPUUtilizationPercentage: 60
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ingress-nginx-controller
+  namespace: default
+spec:
+  maxReplicas: 40
+  minReplicas: 40
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nginx-controller-ingress-nginx-controller
+  targetCPUUtilizationPercentage: 50
+--- 
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ingress-nginx-controller-private
+  namespace: ingress-nginx
+spec:
+  maxReplicas: 20
+  minReplicas: 20
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nginx-controller-private-ingress-nginx-controller
+  targetCPUUtilizationPercentage: 50
+---
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: faceapi-milvus-datacoord
+#  namespace: default
+#spec:
+#  maxReplicas: 10
+#  minReplicas: 1
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: faceapi-milvus-datacoord
+#  targetCPUUtilizationPercentage: 20
+#---
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: faceapi-milvus-datanode
+#  namespace: default
+#spec:
+#  maxReplicas: 10
+#  minReplicas: 1
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: faceapi-milvus-datanode
+#  targetCPUUtilizationPercentage: 20
+#---
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: faceapi-milvus-indexcoord
+#  namespace: default
+#spec:
+#  maxReplicas: 10
+#  minReplicas: 1
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: faceapi-milvus-indexcoord
+#  targetCPUUtilizationPercentage: 20
+#---
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: faceapi-milvus-indexnode
+#  namespace: default
+#spec:
+#  maxReplicas: 10
+#  minReplicas: 1
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: faceapi-milvus-indexnode
+#  targetCPUUtilizationPercentage: 20
+#---
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: faceapi-milvus-proxy
+#  namespace: default
+#spec:
+#  maxReplicas: 10
+#  minReplicas: 1
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: faceapi-milvus-proxy
+#  targetCPUUtilizationPercentage: 20
+#---
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: faceapi-milvus-querycoord
+#  namespace: default
+#spec:
+#  maxReplicas: 10
+#  minReplicas: 1
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: faceapi-milvus-querycoord
+#  targetCPUUtilizationPercentage: 20
+#---
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: faceapi-milvus-querynode
+#  namespace: default
+#spec:
+#  maxReplicas: 10
+#  minReplicas: 1
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: faceapi-milvus-querynode
+#  targetCPUUtilizationPercentage: 20
+#---
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: faceapi-milvus-rootcoord
+#  namespace: default
+#spec:
+#  maxReplicas: 10
+#  minReplicas: 1
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: faceapi-milvus-rootcoord
+#  targetCPUUtilizationPercentage: 20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

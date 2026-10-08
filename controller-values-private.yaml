@@ -1,0 +1,75 @@
+## Labels to apply to all resources
+##
+#commonLabels: {} main one
+#
+#fargate_use
+commonLabels:  
+  namespace: ingress-nginx 
+# scmhash: abc123
+# myLabel: aakkmd
+
+controller:
+  # -- Use a `DaemonSet` or `Deployment`
+  kind: Deployment
+  
+  livenessProbe:
+    httpGet:
+      # should match container.healthCheckPath
+      path: "/healthz"
+      port: 10254
+      scheme: HTTP
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 5
+  readinessProbe:
+    httpGet:
+      # should match container.healthCheckPath
+      path: "/healthz"
+      port: 10254
+      scheme: HTTP
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+    
+  ingressClassResource:
+    name: nginx-controller-private
+    default: false
+    controllerValue: k8s.io/ingress-nginx-private
+
+  # -- Path of the health check endpoint. All requests received on the port defined by
+  # the healthz-port parameter are forwarded internally to this path.
+  healthCheckPath: "/healthz"
+
+  podAnnotations:
+    ad.datadoghq.com/controller.check_names: '["nginx","nginx_ingress_controller"]'
+    ad.datadoghq.com/controller.init_configs: '[{},{}]'
+    ad.datadoghq.com/controller.instances: '[{"nginx_status_url": "http://%%host%%:18080/nginx_status"},{"prometheus_url":"http://%%host%%:10254/metrics"}]'
+    ad.datadoghq.com/controller.logs: '[{ "source": "nginx-ingress-controller","service": "ingress-controller" }]'
+    
+  replicaCount: 1
+  minAvailable: 1
+
+  metrics:
+    port: 10254
+    # if this port is changed, change healthz-port: in extraArgs: accordingly
+    enabled: true
+
+  service:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: map-migrated=migLOR6U1QEIP
+      service.beta.kubernetes.io/aws-load-balancer-name: faceapi-private
+      service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+   #  service.beta.kubernetes.io/aws-load-balancer-type : "external"
+    # service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+      service.beta.kubernetes.io/aws-load-balancer-scheme: internal
+      service.beta.kubernetes.io/aws-load-balancer-manage-backend-security-group-rules: "true"
+      service.beta.kubernetes.io/load-balancer-source-ranges: 172.16.0.0/16 
+      #service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip  #enable only if you have fargate installed
+      # prometheus.io/scrape: "true"
+      # prometheus.io/port: "10254"
+

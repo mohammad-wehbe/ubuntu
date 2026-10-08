@@ -1,0 +1,57 @@
+## Default values for Datadog Agent
+## See Datadog helm documentation to learn more:
+## https://docs.datadoghq.com/agent/kubernetes/helm/
+
+## FOR AN EFFORTLESS UPGRADE PATH, DO NOT COPY THIS FILE AS YOUR OWN values.yaml.
+## ONLY SET THE VALUES YOU WANT TO OVERRIDE IN YOUR values.yaml.
+
+# nameOverride -- Override name of app
+nameOverride:  # ""
+
+# fullnameOverride -- Override the full qualified app name
+fullnameOverride:  # ""
+
+# targetSystem -- Target OS for this deployment (possible values: linux, windows)
+targetSystem: "linux"
+
+# commonLabels -- Labels to apply to all resources
+commonLabels: {}
+# team_name: dev
+
+# registry -- Registry to use for all Agent images (default to [gcr.io | eu.gcr.io | asia.gcr.io | datadoghq.azurecr.io | public.ecr.aws/datadog] depending on datadog.site value)
+
+## Currently we offer Datadog Agent images on:
+## GCR US - use gcr.io/datadoghq
+## GCR Europe - use eu.gcr.io/datadoghq
+## GCR Asia - use asia.gcr.io/datadoghq
+## Azure - use datadoghq.azurecr.io
+## AWS - use public.ecr.aws/datadog
+## DockerHub - use docker.io/datadog
+registry:  public.ecr.aws/datadog
+
+datadog:
+  # datadog.apiKey -- Your Datadog API key
+  ## ref: https://app.datadoghq.com/account/settings#agent/kubernetes
+  apiKey: 8a0374c9a0dbe1358c8454f6ea18640f
+
+  # datadog.clus ## https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.FIELDS.name
+  clusterName: forensics-production
+  logs:
+    enabled: true
+  site:  datadoghq.eu
+  containerExcludeLogs: "image:datadog/agent  image:milvusdb/milvus image:eks/kube-proxy image:datadog/agent image:apachepulsar/pulsar"
+
+agents:
+  enabled: true
+  containers:
+    agent:
+      securityContext: {}
+  # agents.tolerations -- Allow the DaemonSet to schedule on tainted nodes (requires Kubernetes >= 1.6)
+  tolerations: 
+  - key: node-role.kubernetes.io/master
+    operator: Exists
+    effect: NoSchedule
+  - key: nvidia.com/gpu
+    operator: Exists
+    effect: NoSchedule
+
