@@ -1,1 +1,844 @@
 
+[default]
+region = eu-west-1
+output = yaml
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+ 
+[profile acs]
+region = eu-west-1
+output = yaml
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+ 
+# /*
+# * DD Landing Zone
+# */
+[profile dd-core-log-archive]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 126119771031
+sso_role_name = core-security-admin
+region = eu-west-1
+output = yaml
+ 
+[profile dd-core-audit]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 305585042619
+sso_role_name = core-security-admin
+region = eu-west-1
+output = yaml
+ 
+[profile dd-core-identity-center]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 354652941951
+sso_role_name = core-identity-center-admin
+region = eu-west-1
+output = yaml
+ 
+[profile dd-core-management]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 266942171235
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile dd-core-servicecatalog-forge]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 550848009230
+sso_role_name = core-servicecatalog-admin
+region = eu-west-1
+output = yaml
+ 
+[profile dd-core-operations]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 558551287376
+sso_role_name = core-systemsmanager-admin
+region = eu-west-1
+output = yaml
+ 
+[profile dd-core-network]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 443194767659
+sso_role_name = core-network-admin
+region = eu-west-1
+output = yaml
+ 
+[profile dd-infrastructure-forge]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 088760435091
+sso_role_name = dd-infrastructure-forge-admin
+region = eu-west-1
+output = yaml
+ 
+[profile dd-sandbox-anton-weers]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /home/anton/2042.crt
+sso_region = eu-west-1
+sso_account_id = 032505312552
+sso_role_name = dd-sandbox-admin
+region = eu-west-1
+output = yaml
+ 
+[profile demo-absa-workspaces]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 590183789306
+sso_role_name = dd-sandbox-admin
+region = eu-west-1
+output = yaml
+ 
+[profile dd-sandbox-servicecatalog-forge]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 175595148253
+sso_role_name = core-servicecatalog-admin
+region = eu-west-1
+output = yaml
+ 
+[profile demo-sbsa-servicecatalog-forge]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 381492311574
+sso_role_name = servicecatalog-developer
+region = eu-west-1
+output = yaml
+ 
+[profile demo-sbsa-servicecatalog-administrator]
+sso_start_url = https://d-93670a2513.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 381492311574
+sso_role_name = servicecatalog-administrator
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * HCE Landing Zone
+# */
+[profile hce-core-management]
+sso_start_url = https://d-93672f0225.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 938114768757
+sso_role_name = AWSAdministratorAccess
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * NTT CALZ Landing Zone
+# */
+[profile ntt-calz-core-management]
+sso_start_url = https://d-93675824a5.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 573874539062
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile ntt-calz-core-audit]
+sso_start_url = https://d-93675824a5.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 895772333337
+sso_role_name = core-security-admin
+region = eu-west-1
+output = yaml
+ 
+[profile ntt-calz-core-log-archive]
+sso_start_url = https://d-93675824a5.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 747054651293
+sso_role_name = core-security-admin
+region = eu-west-1
+output = yaml
+ 
+[profile ntt-calz-core-identity-center]
+sso_start_url = https://d-93675824a5.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 638701611272
+sso_role_name = core-identity-center-admin
+region = eu-west-1
+output = yaml
+ 
+[profile ntt-calz-core-network]
+sso_start_url = https://d-93675824a5.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 483494577105
+sso_role_name = core-network-admin
+region = eu-west-1
+output = yaml
+ 
+[profile ntt-calz-core-servicecatalog]
+sso_start_url = https://d-93675824a5.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 596016978069
+sso_role_name = core-servicecatalog-admin
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * Sandbox Landing Zone
+# */
+[profile sandbox-core-management]
+sso_start_url = https://d-936774ad9a.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 990401255718
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile sandbox-core-audit]
+sso_start_url = https://d-936774ad9a.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 277537108151
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile sandbox-core-log-archive]
+sso_start_url = https://d-936774ad9a.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 561639863549
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile sandbox-core-identity-center]
+sso_start_url = https://d-936774ad9a.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 386180362741
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile sandbox-core-network]
+sso_start_url = https://d-936774ad9a.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 853041350795
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile sandbox-core-servicecatalog-forge]
+sso_start_url = https://d-936774ad9a.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 370783871846
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * E3X Landing Zone
+# */
+[profile e3x-core-management]
+sso_start_url = https://d-93675f1f1a.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 727701234141
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile e3x-core-audit]
+sso_start_url = https://d-93675f1f1a.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 852223408813
+sso_role_name = core-security-admin
+region = eu-west-1
+output = yaml
+ 
+[profile e3x-core-servicecatalog-forge]
+sso_start_url = https://d-93675f1f1a.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 873953477858
+sso_role_name = core-servicecatalog-admin
+region = eu-west-1
+output = yaml
+ 
+[profile e3x-core-identity-center]
+sso_start_url = https://d-93675f1f1a.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 413861203767
+sso_role_name = core-identity-center-admin
+region = eu-west-1
+output = yaml
+ 
+[profile e3x-core-network]
+sso_start_url = https://d-93675f1f1a.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 744965523635
+sso_role_name = core-network
+region = eu-west-1
+output = yaml
+ 
+[profile e3x-core-log-archive]
+sso_start_url = https://d-93675f1f1a.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 016278118718
+sso_role_name = core-security-admin
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * MRD Landing Zone
+# */
+[profile mrd-core-management]
+sso_start_url = https://d-936704819f.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 223331869938
+sso_role_name = mrd-administrators
+region = eu-west-1
+output = yaml
+ 
+[profile mrd-core-audit]
+sso_start_url = https://d-936704819f.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 650871437121
+sso_role_name = mrd-administrators
+region = eu-west-1
+output = yaml
+ 
+[profile mrd-core-servicecatalog-forge]
+sso_start_url = https://d-936704819f.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 814687806856
+sso_role_name = mrd-administrators
+region = eu-west-1
+output = yaml
+ 
+[profile mrd-core-network]
+sso_start_url = https://d-936704819f.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 774910645934
+sso_role_name = mrd-administrators
+region = eu-west-1
+output = yaml
+ 
+[profile mrd-core-log-archive]
+sso_start_url = https://d-936704819f.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 326759484185
+sso_role_name = mrd-administrators
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * Clicks Landing Zone
+# */
+[profile cli-core-network]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 546158667604
+sso_role_name = core-network-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-core-service-catalog]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 609803702243
+sso_role_name = core-service-catalog-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-core-management]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 010526237942
+sso_role_name = core-management-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-core-log-archive]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 201262570448
+sso_role_name = core-log-archive-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-business-prod]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 311042609139
+sso_role_name = entrostat-business-prod-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-business-staging]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 403692606035
+sso_role_name = entrostat-business-staging-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-business-uat]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 783648732771
+sso_role_name = entrostat-business-uat-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-document-prod]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 535276128220
+sso_role_name = entrostat-document-prod-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-document-staging]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 156783343713
+sso_role_name = entrostat-document-staging-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-document-uat]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 465733921692
+sso_role_name = entrostat-document-uat-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-core-identity-center]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 692648989625
+sso_role_name = core-identity-center-admin
+region = af-south-1
+output = yaml
+ 
+[profile cli-sandbox]
+sso_start_url = https://d-c667067ef1.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 569025214211
+sso_role_name = entrostat-sandbox-admin
+region = af-south-1
+output = yaml
+ 
+# /*
+# * NTT Dedicated Landing Zone
+# */
+[profile nttdata-dedicated-core-management]
+sso_start_url = https://d-9367a47901.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 869935080000
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-dedicated-core-network]
+sso_start_url = https://d-9367a47901.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 658586622110
+sso_role_name = core-network-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-dedicated-core-audit]
+sso_start_url = https://d-9367a47901.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 439803112354
+sso_role_name = core-audit-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-dedicated-core-log-archive]
+sso_start_url = https://d-9367a47901.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 581057288260
+sso_role_name = core-log-archive-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-dedicated-core-servicecatalog]
+sso_start_url = https://d-9367a47901.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 296297840851
+sso_role_name = core-servicecatalog-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-dedicated-core-identity-center]
+sso_start_url = https://d-9367a47901.awsapps.com/start/
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 423390070025
+sso_role_name = core-identity-center-admin
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * NTT Shared Landing Zone
+# */
+[profile nttdata-shared-core-management]
+sso_start_url = https://d-9367a6f518.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 957833999339
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-shared-core-network]
+sso_start_url = https://d-9367a6f518.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 733993377540
+sso_role_name = core-network-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-shared-core-audit]
+sso_start_url = https://d-9367a6f518.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 884090048486
+sso_role_name = core-audit-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-shared-core-log-archive]
+sso_start_url = https://d-9367a6f518.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 625083152572
+sso_role_name = core-log-archive-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-shared-core-servicecatalog]
+sso_start_url = https://d-9367a6f518.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 434473100967
+sso_role_name = core-servicecatalog-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-shared-core-identity-center]
+sso_start_url = https://d-9367a6f518.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 081653453302
+sso_role_name = core-identity-center-admin
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * NTT AMZ Landing Zone
+# */
+ 
+[profile nttdata-amz-core-management]
+sso_start_url = https://d-9367affff4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 169120939289
+sso_role_name = core-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-amz-core-key-management]
+sso_start_url = https://d-9367affff4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 110410571646
+sso_role_name = core-key-management-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-amz-core-audit]
+sso_start_url = https://d-9367affff4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 228046340925
+sso_role_name = core-audit-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-amz-core-log-archive]
+sso_start_url = https://d-9367affff4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 793523315754
+sso_role_name = core-log-archive-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-amz-core-servicecatalog]
+sso_start_url = https://d-9367affff4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 913500087929
+sso_role_name = core-servicecatalog-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nttdata-amz-core-identity-center]
+sso_start_url = https://d-9367affff4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 968335571656
+sso_role_name = core-identity-center-admin
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * IDM Landing Zone
+# */
+ 
+[profile idm-core-management]
+sso_start_url = https://d-c66704c408.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 390403902243
+sso_role_name = core-management-admin
+region = af-south-1
+output = yaml
+ 
+[profile idm-core-security]
+sso_start_url = https://d-c66704c408.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 1645040173486
+sso_role_name = core-security-admin
+region = af-south-1
+output = yaml
+ 
+[profile idm-core-audit]
+sso_start_url = https://d-c66704c408.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 370165568347
+sso_role_name = core-audit-admin
+region = af-south-1
+output = yaml
+ 
+[profile idm-core-log-archive]
+sso_start_url = https://d-c66704c408.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 553817834022
+sso_role_name = core-log-archive-admin
+region = af-south-1
+output = yaml
+ 
+[profile idm-omni-dev]
+sso_start_url = https://d-c66704c408.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 316504259343
+sso_role_name = omni-dev-admin
+region = af-south-1
+output = yaml
+ 
+[profile idm-core-identity-center]
+sso_start_url = https://d-c66704c408.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 493717078313
+sso_role_name = core-identity-center-admin
+region = af-south-1
+output = yaml
+ 
+# /*
+# * Trackmatic Landing Zone
+# */
+ 
+[profile trk-core-management]
+sso_start_url = https://trackmatic.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 607698115737
+sso_role_name = AWSAdministratorAccess
+region = eu-west-1
+output = yaml
+ 
+[profile trk-core-network]
+sso_start_url = https://trackmatic.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 765481710072
+sso_role_name = Network-NetAdmn
+region = eu-west-1
+output = yaml
+ 
+[profile trk-production]
+sso_start_url = https://trackmatic.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 046301964525
+sso_role_name = ReadOnlyAccess
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * SANBS Landing Zone
+# */
+ 
+[profile nbs-core-management]
+sso_start_url = https://d-c66776e8e4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 711907671329
+sso_role_name = core-management-admin
+region = af-south-1
+output = yaml
+ 
+[profile nbs-core-identity-center]
+sso_start_url = https://d-c66776e8e4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 348265566535
+sso_role_name = core-identity-center-admin
+region = af-south-1
+output = yaml
+ 
+[profile nbs-core-servicecatalog]
+sso_start_url = https://d-c66776e8e4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 000540852137
+sso_role_name = core-servicecatalog-admin
+region = eu-west-1
+output = yaml
+ 
+[profile nbs-core-network]
+sso_start_url = https://d-c66776e8e4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 396231126622
+sso_role_name = core-network-admin
+region = af-south-1
+output = yaml
+ 
+[profile nbs-core-log-archive]
+sso_start_url = https://d-c66776e8e4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 984357029724
+sso_role_name = core-log-archive-admin
+region = af-south-1
+output = yaml
+ 
+[profile nbs-core-operations]
+sso_start_url = https://d-c66776e8e4.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = af-south-1
+sso_account_id = 575228958719
+sso_role_name = core-operations-admin
+region = af-south-1
+output = yaml
+ 
+# /*
+# * Standard Bank Production Landing Zone
+# */
+ 
+[profile sbsa-cloud-platform-operations]
+sso_start_url = https://standardbankgroup.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 553455963783
+sso_role_name = SSOCloudOpsOrgRole
+region = eu-west-1
+output = yaml
+ 
+# /*
+# * Standard Bank Engineering Landing Zone
+# */
+ 
+[profile sbg-eng-cloud-engineering]
+sso_start_url = https://d-93672c116c.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 665457003970
+sso_role_name = SSOAdminOrgEngineeringRole
+region = eu-west-1
+output = yaml
+ 
+[profile sbg-eng-shared-services]
+sso_start_url = https://d-93672c116c.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 668916172745
+sso_role_name = SSOAdminOrgEngineeringRole
+region = eu-west-1
+output = yaml
+ 
+[profile sbg-eng-security]
+sso_start_url = https://d-93672c116c.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 518011061450
+sso_role_name = SSOAdminOrgEngineeringRole
+region = eu-west-1
+output = yaml
+ 
+[profile sbg-eng-management]
+sso_start_url = https://d-93672c116c.awsapps.com/start
+ca_bundle = /etc/ssl/certs/ca-certificates.crt
+sso_region = eu-west-1
+sso_account_id = 339639759819
+sso_role_name = SSOAdminOrgEngineeringRole
+region = eu-west-1
+output = yaml
